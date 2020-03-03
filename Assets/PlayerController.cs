@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
 
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2.0f;
-    public float gravity = 0.5f;
 
     void Start()
     {
@@ -40,6 +39,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
 
-        transform.position = new Vector3((Input.GetAxis("Horizontal") * runSpeed) * Time.deltaTime, transform.position.y, 0f);
+        rb.velocity = new Vector3((Input.GetAxis("Horizontal") * runSpeed), rb.velocity.y, 0f);
+        Debug.Log(rb.velocity);
     }
 }

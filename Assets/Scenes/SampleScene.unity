@@ -401,11 +401,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a2ddf9cb4e918a40838bbd508dc359d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  runSpeed: 7
   jumpVel: 8
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
-  gravity: 20
 --- !u!54 &1407901877
 Rigidbody:
   m_ObjectHideFlags: 0
