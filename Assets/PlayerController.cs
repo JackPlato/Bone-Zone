@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 moveDir = Vector3.zero;
 
-    public float speed = 7.0f;
+    public float runSpeed = 7.0f;
     public float jumpVel = 5.0f;
 
     public float fallMultiplier = 2.5f;
@@ -24,10 +24,7 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update()
-    {
-        moveDir = new Vector3(Input.GetAxis("Horizontal"), 0f, 0f);
-        moveDir *= speed;
-        
+    {        
         if (Input.GetButtonDown("Jump"))
         {
             rb.velocity = Vector3.up * jumpVel;
@@ -42,5 +39,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
+
+        transform.position = new Vector3((Input.GetAxis("Horizontal") * runSpeed) * Time.deltaTime, transform.position.y, 0f);
     }
 }
