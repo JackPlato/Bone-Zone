@@ -5,13 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     GameObject player;
-    CharacterController controller;
     Rigidbody rb;
 
     private Vector3 moveDir = Vector3.zero;
 
     public float speed = 7.0f;
-    public float jumpVel = 8.0f;
+    public float jumpVel = 5.0f;
 
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2.0f;
@@ -21,7 +20,6 @@ public class PlayerController : MonoBehaviour
     {
         //hook up variables
         player = GetComponent<GameObject>();
-        controller = GetComponent<CharacterController>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -33,7 +31,9 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             rb.velocity = Vector3.up * jumpVel;
+            Debug.Log(rb.velocity);
         }
+
         if (rb.velocity.y < 0)
         {
             rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
@@ -42,7 +42,5 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
-
-        controller.Move(moveDir * Time.deltaTime);
     }
 }
